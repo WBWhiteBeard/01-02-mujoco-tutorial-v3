@@ -94,9 +94,9 @@ def r2rpy(R,unit='rad'):
     """
         Rotation matrix to roll,pitch,yaw in radian
     """
-    roll  = atan2(R[2, 1], R[2, 2])
-    pitch = atan2(-R[2, 0], (sqrt(R[2, 1] ** 2 + R[2, 2] ** 2)))
-    yaw   = atan2(R[1, 0], R[0, 0])
+    roll  = np.atan2(R[2, 1], R[2, 2])
+    pitch = np.atan2(-R[2, 0], (np.sqrt(R[2, 1] ** 2 + R[2, 2] ** 2)))
+    yaw   = np.atan2(R[1, 0], R[0, 0])
     if unit == 'rad':
         out = np.array([roll, pitch, yaw])
     elif unit == 'deg':
