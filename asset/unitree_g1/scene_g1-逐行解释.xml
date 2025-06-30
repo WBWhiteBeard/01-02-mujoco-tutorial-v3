@@ -1,0 +1,42 @@
+<mujoco model="snapbot scene">
+
+  <!-- UR5e -->
+  <include file="./g1.xml" />
+
+  <!-- Floor and Sky -->
+  <include file="./floor_isaac_style.xml" />
+
+  <body name="g1_1" pos="0 0 0">
+        <include file="g1.xml"/>
+  </body>
+
+  <!-- 
+
+  1. <mujoco model="snapbot scene">
+  声明了一个 MuJoCo 仿真模型，模型名称为 "snapbot scene"。  
+
+  2. UR5e 
+  这是一个注释，说明下面包含的是 UR5e 相关的模型文件（但实际引用的是 g1.xml，可能是四足机器人 G1 的模型）。 
+  
+  3. <include file="./g1.xml" />
+  引入当前目录下的 g1.xml 文件。这个文件通常定义了机器人（如 Unitree G1）的具体结构、关节、传感器等。  
+  
+  4. Floor and Sky 
+  注释，说明下面包含的是地面和天空的模型。  
+  
+  5. <include file="./floor_isaac_style.xml" />
+  引入当前目录下的 floor_isaac_style.xml 文件。这个文件一般定义了仿真环境中的地面、天空等基础场景元素。  
+  
+  6. </mujoco>
+  结束整个 MuJoCo 模型的定义。
+
+
+问题1：添加多个机器人，但是多个机器人都是一份文件，是怎么编写的，比如5个机器人
+1. 用 <include> 加载多份同样的文件，但每份都用 <body name="robot1">...</body> 包裹，
+并在 include 前后用 <body> 指定唯一名字
+
+
+
+-->
+
+</mujoco>
