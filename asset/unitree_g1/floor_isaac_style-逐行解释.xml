@@ -1,0 +1,52 @@
+<mujoco model="floor and sky">
+
+    <visual>
+    <!-- 设置全局视觉效果（如光源、雾气） -->
+
+        <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0" />
+        <!-- 主光源设置，diffuse为漫反射，ambient为环境光，specular为镜面反射 -->
+
+        <rgba haze="0.15 0.25 0.35 1" />
+        <!-- 场景雾气颜色，haze为雾的RGBA值，最后一个为透明度 -->
+    </visual>
+
+    <asset>
+        <!-- Sky -->
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
+            height="3072" />
+         <!-- 天空盒纹理，type="skybox"表示天空，builtin="gradient"为渐变色，
+         rgb1为顶部颜色，rgb2为底部颜色，width/height为分辨率 -->
+
+        <!-- Ground -->
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.9 0.9 0.9"
+            rgb2="0.8 0.8 0.8"
+            markrgb="0.8 0.8 0.8" width="1000" height="1000" />
+        <!-- 地面纹理，type="2d"为二维纹理，name为纹理名，builtin="checker"为棋盘格，mark="edge"加边框，
+            rgb1/rgb2为两种颜色，markrgb为边框色，width/height为分辨率 -->
+
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="1 1"
+            reflectance="0.1" />
+        <!-- 地面材质，name为材质名，texture指定使用的纹理，texuniform表示纹理均匀，
+            texrepeat为纹理重复次数，reflectance为反射率 -->
+    </asset>
+
+    <worldbody>
+    <!-- <worldbody>：定义场景中的物体、光源、地面等主体元素。 -->
+
+        <light pos="1 -1 1.5" dir="-1 1 -1" diffuse="0.5 0.5 0.5" directional="true" />
+        <!-- 添加一个方向光源，pos为光源位置，dir为方向，diffuse为光强，directional为真表示方向光 -->
+
+        <geom name="floor" group="1" size="0 0 0.05" type="plane" material="groundplane" />
+        <!-- 添加地面，name为几何体名，group为分组，size="0 0 0.05"表示平面厚度，
+                type="plane"为平面，material指定材质 -->
+    </worldbody>
+
+</mujoco>
+
+<!-- 
+
+
+
+ -->
+
+
